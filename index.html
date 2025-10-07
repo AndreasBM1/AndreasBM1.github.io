@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incremental Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .game-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            min-width: 300px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .counter {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 30px 0;
+            min-height: 60px;
+        }
+        
+        .click-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .click-button:hover {
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+        
+        .click-button:active {
+            transform: scale(0.95);
+        }
+        
+        .stats {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Incremental Game</h1>
+        <div class="counter" id="counter">0</div>
+        <button class="click-button" id="clickButton">Click Me!</button>
+        <div class="stats">
+            <p>Total Clicks: <span id="totalClicks">0</span></p>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        let totalClicks = 0;
+        
+        const counterElement = document.getElementById('counter');
+        const clickButton = document.getElementById('clickButton');
+        const totalClicksElement = document.getElementById('totalClicks');
+        
+        clickButton.addEventListener('click', function() {
+            count++;
+            totalClicks++;
+            counterElement.textContent = count;
+            totalClicksElement.textContent = totalClicks;
+        });
+    </script>
+</body>
+</html>
