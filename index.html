@@ -75,16 +75,16 @@
     </div>
 
     <script>
-        let count = 0;
-        let totalClicks = 0;
+        let count = 1;
+        let totalClicks = 1;
         
         const counterElement = document.getElementById('counter');
         const clickButton = document.getElementById('clickButton');
         const totalClicksElement = document.getElementById('totalClicks');
         
         clickButton.addEventListener('click', function() {
-            count++;
-            totalClicks++;
+            count += count;
+            totalClicks += totalClicks;
             counterElement.textContent = count;
             totalClicksElement.textContent = totalClicks;
         });
