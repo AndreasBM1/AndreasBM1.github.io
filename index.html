@@ -1,93 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Incremental Game</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #BADA55 0%, #000000 100%);
-        }
-        
-        .game-container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            min-width: 300px;
-        }
-        
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .counter {
-            font-size: 48px;
-            font-weight: bold;
-            color: #BADA55;
-            margin: 30px 0;
-            min-height: 60px;
-        }
-        
-        .click-button {
-            background: linear-gradient(135deg, #BADA55 0%, #353935 100%);
-            color: white;
-            border: none;
-            padding: 20px 40px;
-            font-size: 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.333s, box-shadow 0.3s;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .click-button:hover {
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-        }
-        
-        .click-button:active {
-            transform: scale(1.95);
-        }
-        
-        .stats {
-            margin-top: 20px;
-            color: #666;
-            font-size: 14px;
-        }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Mute/Unmute music control (top left corner) -->
+    <button id="muteMusicButton" class="mute-music-btn" aria-label="Mute Music">
+      <!-- Default: Unmute SVG icon -->
+      <svg id="muteIcon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <path d="M4 12v8h6l8 8V4l-8 8H4z" fill="#222" />
+        <path
+          d="M24 10l4 4m0 0l-4 4"
+          stroke="#bada55"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
     <div class="game-container">
-        <h1>Incremental Game</h1>
-        <div class="counter" id="counter">0</div>
-        <button class="click-button" id="clickButton">Click Me!</button>
-        <div class="stats">
-            <p>Total Clicks: <span id="totalClicks">0</span></p>
+      <h1>Incremental Game</h1>
+      <div class="counter" id="counter">1</div>
+      <img
+        src="droemmekage_transparent_v3.png"
+        alt="Click Cake"
+        id="clickButton"
+        class="click-button"
+        width="400px"
+      />
+      <div class="stats">
+        <p>Total Clicks: <span id="totalClicks">1</span></p>
+        <!-- controls -->
+        <div style="margin-top: 12px">
+          <button id="resetButton" style="margin-right: 8px">Reset</button>
+          <button id="exportButton" style="margin-right: 8px">Export</button>
+          <button id="importButton">Import</button>
+          <input
+            id="importFile"
+            type="file"
+            accept="application/json"
+            style="display: none"
+          />
         </div>
+        <div style="margin-top: 24px">
+          <h2>Buildings</h2>
+          <div id="buildingsList"></div>
+        </div>
+      </div>
+      <div id="notification" class="notification"></div>
     </div>
-
-    <script>
-        let count = 1;
-        let totalClicks = 1;
-        
-        const counterElement = document.getElementById('counter');
-        const clickButton = document.getElementById('clickButton');
-        const totalClicksElement = document.getElementById('totalClicks');
-        
-        clickButton.addEventListener('click', function() {
-            count += count;
-            totalClicks += totalClicks;
-            counterElement.textContent = count;
-            totalClicksElement.textContent = totalClicks;
-        });
-    </script>
-</body>
+    <audio
+      id="bgMusic"
+      src="andreas_strides.mp3"
+      autoplay
+      loop
+      controls
+    ></audio>
+    <script src="main.js"></script>
+  </body>
 </html>
